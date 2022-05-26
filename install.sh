@@ -21,51 +21,46 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
-printf " <----------------------------------------------------------------->   
-                  ( INSTALLING OPENJDK-11-JRE ) 
-         <-----------------------------------------------------------------> "
+# INSTALLING OPENJDK-11-JRE
+
 pacman -S jre11-openjdk -y
-printf " <----------------------------------------------------------------->   
-                         ( INSTALLED ) 
-         <-----------------------------------------------------------------> "
-sleep 5         
-printf " <----------------------------------------------------------------->   
-                   ( INSTALLING OPENJDK-11-JDK ) 
-         <-----------------------------------------------------------------> "
+
+echo -ne '>>>                       [20%]\r'
+sleep 5
+
+# INSTALLING OPENJDK-11-JDK
+
 pacman -S jdk11-openjdk -y
 sleep 5
-printf " <----------------------------------------------------------------->   
-                          ( INSTALLED ) 
-         <-----------------------------------------------------------------> "
+
+echo -ne '>>>>>>>                   [40%]\r'
 sleep 5
-printf " <----------------------------------------------------------------->   
-                     ( CREATING DIRECTORY ) 
-         <-----------------------------------------------------------------> "
-sleep 2
+# CREATING DIRECTORY
+
 mkdir /opt/Burp 
-printf " <----------------------------------------------------------------->   
-                       ( DIRECTORY CREATED ) 
-         <-----------------------------------------------------------------> "
 sleep 2
-printf " <----------------------------------------------------------------->   
-                     ( MOVING FILES IN DIRECTORY ) 
-         <-----------------------------------------------------------------> "
+
+# MOVING FILES IN DIRECTORY
+
 sleep 5
+echo -ne '>>>>>>>>>>>>>>            [60%]\r'
+
 mv burp-pro-loader.jar /opt/Burp/
 mv license-generator.jar /opt/Burp/
 mv burp-suite-professional.svg /usr/share/pixmaps/
 mv burpsuite_pro_v* /opt/Burp/
 sleep 30
 
-printf " <----------------------------------------------------------------->   
-                       ( WRITTING EXCUTABLE COMMANDS ) 
-         <-----------------------------------------------------------------> "
+# WRITTING EXCUTABLE COMMANDS
+
 sleep 5
+echo -ne '>>>>>>>>>>>>>>>>>>>>>>>   [80%]\r'
+
 echo "cd /opt/Burp/ && java -jar --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.desktop/javax.swing=ALL-UNNAMED --illegal-access=warn  -javaagent:burp-pro-loader.jar -noverify -jar burpsuite_pro_v*.jar &" > /bin/burp
 chmod +x /bin/burp
 echo "cd /opt/Burp/ && java -jar license-generator.jar " > /bin/ligen
 chmod +x /bin/ligen
-printf " <----------------------------------------------------------------->   
-                                 ( INSTALLED ) 
-         <-----------------------------------------------------------------> "
+
+echo -ne '>>>>>>>>>>>>>>>>>>>>>>>>>>[100%]\r'
+echo -ne '\n'
 exit
