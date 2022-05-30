@@ -1,16 +1,16 @@
 # BurpSuitePro_Arch
 
 ```
-git clone https://github.com/k4u5h41/BurpSuitePro.git
+git clone https://github.com/k4u5h41/BurpSuitePro_Arch.git
 ```
 ```
-cd BurpSuitePro/
+cd BurpSuitePro_Arch/
 ```
 download Burpsuite Pro Jar file from
 ```
 https://portswigger.net/burp/releases#professional 
 ```
-add that jar file to `BurpSuitePro/` folder
+add that jar file to `BurpSuitePro_Arch/` folder
 
 ```
 chmod +x install.sh
